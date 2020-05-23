@@ -2,7 +2,14 @@ from django.db import models
 
 # Create your models here.
 class Category(models.Model):
-    category = models.CharField(max_length = 30)
+    CATEGORY_CHOICES=[
+        ('Food', 'Food'),
+        ('Travel', 'Travel'),
+        ('Architecture', 'Architecture'),
+        ('Fashion', 'Fashion'),
+        ('Arts', 'Arts'),
+    ]
+    category = models.CharField(max_length = 30, choices=CATEGORY_CHOICES, default='Travel')
 
     def __str__(self):
         return self.category
