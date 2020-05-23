@@ -3,4 +3,14 @@
 {% block content %}
 {{block.super}}
 <h1 class="text-center"> Homepage </h1>
+
+{% for image in images %}
+<p> name: {{ image.name}}</p>
+<p> description: {{ image.description }}</p>
+<p> category: {{ image.img_category }}</p>
+<p> location: {{ image.img_location }}</p>
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <img src = "{{image.image_pic.url}}" class="img-responsive" alt="Image">
+    </div>
+{% endfor %}
 {% endblock %}
