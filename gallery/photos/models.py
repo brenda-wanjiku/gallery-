@@ -24,9 +24,7 @@ class Category(models.Model):
 class Location(models.Model):
     location = models.CharField(max_length = 30)
 
-    def __str__(self):
-        return self.location
-
+    
     def save_location(self):
         return self.save()
 
@@ -38,6 +36,14 @@ class Location(models.Model):
         cls.objects.filter(id = id).update( location = location)
         updated_location = cls.objects.get(id = id)
         return updated_location
+
+    @classmethod
+    def get_location(cls,id):
+        location = Location.objects(id=id)
+        return location
+    
+    def __str__(self):
+        return self.location
 
 
 class Image(models.Model):
@@ -58,7 +64,7 @@ class Image(models.Model):
 
     @classmethod
     def update_image(cls, image_pic, id):
-        cls.objects.filter( id = id).update( image_pic = image_pic)
+        cls.objects.filter( id = id).update(image_pic = image_pic)
         update_image = cls.objects.get(id = id)
         return update_image
 
@@ -67,6 +73,11 @@ class Image(models.Model):
         images = cls.objects.all()
         return images
 
+
+    @classmethod
+    def filter_by_location(cls,img_location):
+       photo_location = cls.objects.filter(img_location=img_location)
+       return photo_location
 
 
 
