@@ -13,3 +13,9 @@ def get_location(request, img_location):
     '''
     images = Image.filter_by_location(img_location = img_location)
     return render(request, 'img_location.html', { 'images': images } )
+
+
+def single_image(request, id):
+    image = Image.get_image_by_id(id = id)
+    return render(request)
+    
