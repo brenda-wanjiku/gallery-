@@ -10,7 +10,58 @@
 <p> category: {{ image.img_category }}</p>
 <p> location: {{ image.img_location }}</p>
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <img src = "{{image.image_pic.url}}" class="img-responsive" alt="Image">
+    <img src = "{{image.image_pic.url}}" class="img-responsive" alt="Image" style="width: 100%" class="image" data-toggle="modal" data-target="#exampleModal{{image.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
     </div>
+{% endfor %}
+
+
+<!--  modal -->
+{% for image in images %}
+<div class="modal fade"  id="exampleModal{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLongTitle">{{image.name }}</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+     </div>
+    <div class="modal-body">
+      <img src="{{image.image_pic.url}}" class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}" style="width: 100%;">
+      <p> {{image.description }}</p><label for="location"> Image location :{{image.location }}</label>
+
+
+    </div>
+    <div class="modal-footer">
+      <input class="form-control" type="text" value="http://127.0.0.1:8000{{image.image_pic.url}}" id="thislinkhere-{{image.id}}">
+      <a onclick="copyLink({{image.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy
+          image Link</button></a>
+
+    </div>
+    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+  </div>
+</div>
+</div>
+</div>
+</body>
+<style>
+  .image{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 100% !important;
+  }
+  .image:hover{
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    opacity: 0.7;
+    overflow: hidden;
+    transition: .5s ease;
+    transform: translateY(-7px);
+  }
+
+</style>
+
 {% endfor %}
 {% endblock %}
