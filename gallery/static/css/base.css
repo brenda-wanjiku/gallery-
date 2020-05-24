@@ -1,0 +1,11 @@
+.location{
+    margin: 35px;
+    text-align: center;
+}
+.location h1{
+    font-family: 'DM Mono', monospace;
+    font-size: 50px;
+}
+.location h2{
+    font-family: 'DM Mono', monospace; 
+}

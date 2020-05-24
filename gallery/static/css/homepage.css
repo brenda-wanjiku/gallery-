@@ -13,4 +13,21 @@ h2{
 }
 .card{
     text-align: center;
+    margin-top: 20px;
+}
+p{
+    font-family: 'DM Mono', monospace;
+    font-size: 30px;
+    margin-top: 20px;
+}
+h5{
+    font-size: 30px;
+}
+label{
+    font-family: 'DM Mono', monospace;
+    font-size: 25px; 
+}
+.image_link{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
