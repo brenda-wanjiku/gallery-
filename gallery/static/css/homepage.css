@@ -1,8 +1,16 @@
 h1{
     font-family: 'Delius', cursive;
     font-size: 150px;
+    margin-bottom: 30px;
 }
 h2{
     font-family: 'Noto Serif JP', serif;
     font-size: 60px;
+    margin-bottom: 50px;
+}
+#image{
+    text-align: center;
+}
+.card{
+    text-align: center;
 }
