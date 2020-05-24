@@ -28,7 +28,7 @@ def search_results(request):
 
 def single_image(request, id):
     image = Image.get_image_by_id(id = id)
-    return render(request)
+    return render(request,'homepage.html', {'image': image})
     
 def location_name(request,id):
     location = get_location(id =id)
