@@ -1,25 +1,45 @@
-{%extends 'base.html'%} 
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static %}
+{% block styles %}
+            {% bootstrap_css %}
+            <link rel="stylesheet" href="{% static 'css/base.css'%}">
+            <link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Delius&family=EB+Garamond:wght@500&family=Lato&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
+        {% endblock %}
+
 {% block content %}
+
 <div class="container">
+  <div class="search">
 
-  <div class="row">
-    {% if images %}
-      <h2>Found {{ search_images }} of searched term {{message}}</h2>
-    {% else %}
-      <h2> Found 0 articles for the search term {{message}}</h2>
-    {% endif %}
+    <div class="row">
+      {% if images %}
+      <h1 class="text-center"><span style="font-size: 60px;"><strong>{{message}} memory</strong></span> found </h1>
+      <hr>
+      <hr>
+      {% else %}
+      <h1> Whoopps..found 0 articles for the search term {{message}}</h1>
+      {% endif %}
 
-  </div>
+    </div>
 
-  <div class="row">
-
-  {% if images %}
-    {% for image in images %}
-      <div class="col-sm-6 col-md-3">
-          <h1>{{image.name}}</h1>
+    <div class="row">
+      {% if images %}
+      {% for image in images %}
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h3>{{image.name}}</h3>
+            <h2> {{image.description}}</h2>
+            <hr>
+            <hr>
+            <img src="{{image.image_pic.url}}" class="img-responsive" alt="Image">
+          </div>
+        </div>
       </div>
-    {% endfor %}
-  {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
   </div>
 </div>
 {% endblock %}

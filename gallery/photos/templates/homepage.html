@@ -1,74 +1,101 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/homepage.css'%}">
+<link
+  href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Delius&family=EB+Garamond:wght@500&family=Lato&family=Noto+Serif+JP:wght@500&display=swap"
+  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 {{block.super}}
-<h1 class="text-center"> Homepage </h1>
+<div class="container-fluid">
+  <h1 class="text-center"> brè & 97 </h1>
+  <h2 class="text-center"> a.photo.library</h2>
+  <hr>
 
-{% for image in images %}
-<p> name: {{ image.name}}</p>
-<p> description: {{ image.description }}</p>
-<p> category: {{ image.img_category }}</p>
-<p> location: {{ image.img_location }}</p>
-<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <img src = "{{image.image_pic.url}}" class="img-responsive" alt="Image" style="width: 100%" class="image" data-toggle="modal" data-target="#exampleModal{{image.id}}"class="img-responsive" alt="Image" style="max-width:300px;">
+ 
+  
+  <div class="row">
+    {% for image in images %}
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="thumbnail">
+            <div id="image">
+              <img src="{{image.image_pic.url}}" class="img-responsive" alt="Image" class="image"
+                data-toggle="modal" data-target="#exampleModal{{image.id}}" class="img-responsive" alt="Image"
+                style="max-width:300px;">
+            </div>
+            <p>{{ image.name}}</p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      {% endfor %}
+
+
+      <!--  modal -->
+      {% for image in images %}
+      <div class="modal fade" id="exampleModal{{image.id}}" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle" class="text-center">{{image.name }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </div>
+            <div class="modal-body">
+              <img src="{{image.image_pic.url}}" class="img-fluid" data-toggle="modal"
+                data-target="#exampleModal{{image.id}}" style="width: 100%;">
+              <p> {{image.description }}</p><label for="location"> Taken in: {{image.img_location }}</label>
+
+
+            </div>
+            <div class="image_link">
+              <input type="text" value="{{image.image_pic.url}}" id="myInput">
+              <button class="btn bg-primary" onclick="myFunction()">Copy Image Link</button>
+            </div>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
-{% endfor %}
+    </body>
+    <style>
+      .image {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        border-radius: 10px;
+        width: 100% !important;
+      }
+
+      .image:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        opacity: 0.7;
+        overflow: hidden;
+        transition: .5s ease;
+        transform: translateY(-7px);
+      }
+    </style>
+    <script>
+      function myFunction() {
+          var copyText = document.getElementById("myInput");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999)
+          document.execCommand("copy");
+          alert("Link copied");
+        }
+    </script>
 
 
-<!--  modal -->
-{% for image in images %}
-<div class="modal fade"  id="exampleModal{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLongTitle">{{image.name }}</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-     </div>
-    <div class="modal-body">
-      <img src="{{image.image_pic.url}}" class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}" style="width: 100%;">
-      <p> {{image.description }}</p><label for="location"> Image location :{{image.img_location }}</label>
-
-
-    </div>
-    <div class="image_link">
-        <input type="text" value="{{image.image_pic.url}}" id="myInput">
-        <button class="btn bg-secondary" onclick="myFunction()">Copy Image Link</button>
-    </div>
-    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-
-  </div>
-</div>
-</div>
-</div>
-</body>
-<style>
-  .image{
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    border-radius: 10px;
-    width: 100% !important;
-  }
-  .image:hover{
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    opacity: 0.7;
-    overflow: hidden;
-    transition: .5s ease;
-    transform: translateY(-7px);
-  }
-
-</style>
-<script>
-    function myFunction() {
-      var copyText = document.getElementById("myInput");
-      copyText.select();
-      copyText.setSelectionRange(0, 99999)
-      document.execCommand("copy");
-      alert("Link copied");
-    }
-</script>
-
-{% endfor %}
-{% endblock %}
+    {% endblock %}

@@ -101,5 +101,21 @@ class ImageTestClass(TestCase):
 
     def test_filter_by_location(self):
         self.new_image.save_image()
-        img_location = Image.filter_by_location(self.new_image.img_location = img_location)
+        img_location = Image.filter_by_location(self.new_image.img_location == img_location)
         self.assertEqual(img_location.location, "Nairobi" )
+
+    def test_get_image_by_id(self):
+        self.new_image.save_image()
+        image = Image.get_image_by_id(self.new_image.id)
+        self.assertEqual(self.new_image.name, image.name)
+
+
+    def test_search_image_by_category(self):
+        self.new_image.save_image()
+        image_category = Image.search_image_by_category(self.new_image.img_category.category)
+        self.assertEqual(image_category.img_category.category, 'nature')
+
+    def test_update_image(self):
+        self.new_image.save_image()
+        updated_image = Image.update_image(self.new_image.id, 1)
+        self.assertEqual(updated_image.image_pic, 'photo.jpeg')
