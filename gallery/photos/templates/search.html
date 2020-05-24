@@ -2,10 +2,12 @@
 {% load bootstrap4 %}
 {% load static %}
 {% block styles %}
-            {% bootstrap_css %}
-            <link rel="stylesheet" href="{% static 'css/base.css'%}">
-            <link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Delius&family=EB+Garamond:wght@500&family=Lato&family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
-        {% endblock %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/base.css'%}">
+<link
+  href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Delius&family=EB+Garamond:wght@500&family=Lato&family=Noto+Serif+JP:wght@500&display=swap"
+  rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 
