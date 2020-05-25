@@ -1,6 +1,6 @@
 # brè & 97
 
-## Description
+# Description
 A python-based gallery application where the user displays images for others to view 
 
 
