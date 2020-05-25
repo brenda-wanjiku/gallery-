@@ -65,4 +65,3 @@ If you need any clarifications or have feedback on this project , contact the au
 
 # License
 This software is Licensed under MIT license Copyright (2018) https://raw.githubusercontent.com/brenda-wanjiku/gallery-/master/LICENSE
-
