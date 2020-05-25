@@ -8,8 +8,7 @@ def homepage(request):
     Displays all images on homepage
     '''
     images = Image.display_images()
-    single_image = Image.get_image_by_id(id = id)
-    return render(request, 'homepage.html', {'images': images, 'single_image': single_image})
+    return render(request, 'homepage.html', {'images': images})
 
 def get_location(request, img_location):
     '''
@@ -34,6 +33,9 @@ def search_results(request):
         return render(request, 'search.html', {'message': message})
 
 def single_image(request, id):
+    '''
+    Function to display single image 
+    '''
     image = Image.get_image_by_id(id = id)
     return render(request,'homepage.html', {'image': image})
     
