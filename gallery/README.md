@@ -18,6 +18,7 @@ A django-based application that allows allows a user to view various images that
 * Clone the application using git clone(this copies the app onto your device). In your   terminal:
 
 $ git clone https://github.com/brenda-wanjiku/gallery-
+
 $ cd gallery
 
 # Creating the virtual environment
