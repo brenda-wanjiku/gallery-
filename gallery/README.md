@@ -59,6 +59,9 @@ $ python3.8 manage.py test photos
 # Live Site
 *Can be accessed here https://brendagallery.herokuapp.com/
 
+* To log in as an admin you can use the following credentials:
+username : brendawanjiku and password: brenda29
+
 
 # Author's Contact
 If you need any clarifications or have feedback on this project , contact the author at brendawanjiku@gmail.com
